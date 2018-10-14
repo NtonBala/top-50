@@ -1,9 +1,8 @@
 import React from 'react';
+import MainLayout from './components/layout/MainLayout';
 
 const App = () => (
-    <div>
-        Hello from Top 50!
-    </div>
+    <MainLayout/>
 );
 
 export default App;
