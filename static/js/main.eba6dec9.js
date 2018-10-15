@@ -45,7 +45,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(11);
-	module.exports = __webpack_require__(19);
+	module.exports = __webpack_require__(20);
 
 
 /***/ },
@@ -55,7 +55,7 @@
 	'use strict';
 	
 	if (true) {
-	  module.exports = __webpack_require__(28);
+	  module.exports = __webpack_require__(29);
 	} else {
 	  module.exports = require('./cjs/react.development.js');
 	}
@@ -699,7 +699,7 @@
 	/*
 	 Modernizr 3.0.0pre (Custom Build) | MIT
 	*/
-	'use strict';var aa=__webpack_require__(1),n=__webpack_require__(2),ba=__webpack_require__(30);function ca(a,b,c,d,e,f,g,h){if(!a){a=void 0;if(void 0===b)a=Error("Minified exception occurred; use the non-minified dev environment for the full error message and additional helpful warnings.");else{var k=[c,d,e,f,g,h],l=0;a=Error(b.replace(/%s/g,function(){return k[l++]}));a.name="Invariant Violation"}a.framesToPop=1;throw a;}}
+	'use strict';var aa=__webpack_require__(1),n=__webpack_require__(2),ba=__webpack_require__(31);function ca(a,b,c,d,e,f,g,h){if(!a){a=void 0;if(void 0===b)a=Error("Minified exception occurred; use the non-minified dev environment for the full error message and additional helpful warnings.");else{var k=[c,d,e,f,g,h],l=0;a=Error(b.replace(/%s/g,function(){return k[l++]}));a.name="Invariant Violation"}a.framesToPop=1;throw a;}}
 	function t(a){for(var b=arguments.length-1,c="https://reactjs.org/docs/error-decoder.html?invariant="+a,d=0;d<b;d++)c+="&args[]="+encodeURIComponent(arguments[d+1]);ca(!1,"Minified React error #"+a+"; visit %s for the full message or use the non-minified dev environment for full errors and additional helpful warnings. ",c)}aa?void 0:t("227");function da(a,b,c,d,e,f,g,h,k){var l=Array.prototype.slice.call(arguments,3);try{b.apply(c,l)}catch(m){this.onError(m)}}
 	var ea=!1,fa=null,ha=!1,ia=null,ja={onError:function(a){ea=!0;fa=a}};function ka(a,b,c,d,e,f,g,h,k){ea=!1;fa=null;da.apply(ja,arguments)}function la(a,b,c,d,e,f,g,h,k){ka.apply(this,arguments);if(ea){if(ea){var l=fa;ea=!1;fa=null}else t("198"),l=void 0;ha||(ha=!0,ia=l)}}var ma=null,na={};
 	function oa(){if(ma)for(var a in na){var b=na[a],c=ma.indexOf(a);-1<c?void 0:t("96",a);if(!pa[c]){b.extractEvents?void 0:t("97",a);pa[c]=b;c=b.eventTypes;for(var d in c){var e=void 0;var f=c[d],g=b,h=d;qa.hasOwnProperty(h)?t("99",h):void 0;qa[h]=f;var k=f.phasedRegistrationNames;if(k){for(e in k)k.hasOwnProperty(e)&&ra(k[e],g,h);e=!0}else f.registrationName?(ra(f.registrationName,g,h),e=!0):e=!1;e?void 0:t("98",d,a)}}}}
@@ -976,16 +976,16 @@
 	  // Rejection tracking prevents a common issue where React gets into an
 	  // inconsistent state due to an error, but it gets swallowed by a Promise,
 	  // and the user has no idea what causes React's erratic future behavior.
-	  __webpack_require__(26).enable();
-	  window.Promise = __webpack_require__(25);
+	  __webpack_require__(27).enable();
+	  window.Promise = __webpack_require__(26);
 	}
 	
 	// fetch() polyfill for making API calls.
-	__webpack_require__(27);
+	__webpack_require__(28);
 	
 	// Object.assign() is commonly used with React.
 	// It will use the native implementation if it's present and isn't buggy.
-	Object.assign = __webpack_require__(24);
+	Object.assign = __webpack_require__(25);
 
 
 /***/ },
@@ -1229,7 +1229,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _MainLayout = __webpack_require__(23);
+	var _MainLayout = __webpack_require__(24);
 	
 	var _MainLayout2 = _interopRequireDefault(_MainLayout);
 	
@@ -1372,7 +1372,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	var rootURL = exports.rootURL = "https://cors-anywhere.herokuapp.com/http://ws.audioscrobbler.com/2.0/";
+	var rootURL = exports.rootURL = "http://ws.audioscrobbler.com/2.0/";
 	
 	//API query string params
 	var method = exports.method = "chart.gettopartists";
@@ -1395,11 +1395,13 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _superagent = __webpack_require__(32);
+	var _superagent = __webpack_require__(33);
 	
 	var _superagent2 = _interopRequireDefault(_superagent);
 	
 	var _api = __webpack_require__(17);
+	
+	var _githubPages = __webpack_require__(19);
 	
 	var _TopArtists = __webpack_require__(16);
 	
@@ -1455,7 +1457,7 @@
 	
 	            this.setState({ spinner: { fetching: true } });
 	
-	            this._asyncRequest = _superagent2.default.get(_api.rootURL).query({
+	            this._asyncRequest = _superagent2.default.get(_githubPages.CORSworkaround + '/' + _api.rootURL).query({
 	                method: _api.method,
 	                api_key: _api.api_key,
 	                format: _api.format
@@ -1503,6 +1505,19 @@
 
 /***/ },
 /* 19 */
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	//Workaround for deployment on GitHub Pages
+	//Official Herokku API for cross-origin requests for anywhere (https://cors-anywhere.herokuapp.com/)
+	var CORSworkaround = exports.CORSworkaround = "https://cors-anywhere.herokuapp.com";
+
+/***/ },
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1526,7 +1541,7 @@
 	_reactDom2.default.render(_react2.default.createElement(_App2.default, null), app);
 
 /***/ },
-/* 20 */
+/* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1562,7 +1577,7 @@
 	exports.default = Footer;
 
 /***/ },
-/* 21 */
+/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1598,7 +1613,7 @@
 	exports.default = Header;
 
 /***/ },
-/* 22 */
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1634,7 +1649,7 @@
 	exports.default = Main;
 
 /***/ },
-/* 23 */
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1647,15 +1662,15 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Header = __webpack_require__(21);
+	var _Header = __webpack_require__(22);
 	
 	var _Header2 = _interopRequireDefault(_Header);
 	
-	var _Footer = __webpack_require__(20);
+	var _Footer = __webpack_require__(21);
 	
 	var _Footer2 = _interopRequireDefault(_Footer);
 	
-	var _Main = __webpack_require__(22);
+	var _Main = __webpack_require__(23);
 	
 	var _Main2 = _interopRequireDefault(_Main);
 	
@@ -1676,7 +1691,7 @@
 	exports.default = MainLayout;
 
 /***/ },
-/* 24 */
+/* 25 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1765,7 +1780,7 @@
 
 
 /***/ },
-/* 25 */
+/* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1878,7 +1893,7 @@
 
 
 /***/ },
-/* 26 */
+/* 27 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1996,7 +2011,7 @@
 	}
 
 /***/ },
-/* 27 */
+/* 28 */
 /***/ function(module, exports) {
 
 	(function(self) {
@@ -2435,7 +2450,7 @@
 
 
 /***/ },
-/* 28 */
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/** @license React v16.5.2
@@ -2465,7 +2480,7 @@
 
 
 /***/ },
-/* 29 */
+/* 30 */
 /***/ function(module, exports) {
 
 	/** @license React v16.5.2
@@ -2487,20 +2502,20 @@
 
 
 /***/ },
-/* 30 */
+/* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	if (true) {
-	  module.exports = __webpack_require__(29);
+	  module.exports = __webpack_require__(30);
 	} else {
 	  module.exports = require('./cjs/schedule.development.js');
 	}
 
 
 /***/ },
-/* 31 */
+/* 32 */
 /***/ function(module, exports) {
 
 	function Agent() {
@@ -2526,7 +2541,7 @@
 
 
 /***/ },
-/* 32 */
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -2544,10 +2559,10 @@
 	}
 	
 	const Emitter = __webpack_require__(5);
-	const RequestBase = __webpack_require__(33);
+	const RequestBase = __webpack_require__(34);
 	const isObject = __webpack_require__(4);
-	const ResponseBase = __webpack_require__(34);
-	const Agent = __webpack_require__(31);
+	const ResponseBase = __webpack_require__(35);
+	const Agent = __webpack_require__(32);
 	
 	/**
 	 * Noop.
@@ -3451,7 +3466,7 @@
 
 
 /***/ },
-/* 33 */
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4152,7 +4167,7 @@
 
 
 /***/ },
-/* 34 */
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4161,7 +4176,7 @@
 	 * Module dependencies.
 	 */
 	
-	const utils = __webpack_require__(35);
+	const utils = __webpack_require__(36);
 	
 	/**
 	 * Expose `ResponseBase`.
@@ -4294,7 +4309,7 @@
 
 
 /***/ },
-/* 35 */
+/* 36 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -4366,4 +4381,4 @@
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=main.c7120607.js.map
+//# sourceMappingURL=main.eba6dec9.js.map
