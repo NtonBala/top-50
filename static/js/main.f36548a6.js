@@ -1271,6 +1271,11 @@
 	            'Whoops!'
 	        ),
 	        'It seems there\'s been some kind of Error.'
+	    ),
+	    _react2.default.createElement(
+	        'p',
+	        null,
+	        'Try refreshing the page, maybe it\'ll help...'
 	    )
 	);
 	
@@ -1300,7 +1305,7 @@
 	    'div',
 	    null,
 	    _react2.default.createElement(
-	        'h6',
+	        'p',
 	        null,
 	        'Loading...'
 	    )
@@ -1461,19 +1466,19 @@
 	                method: _api.method,
 	                api_key: _api.api_key,
 	                format: _api.format
-	            }).on('error', function (error) {
-	                _this2._asyncRequest = null;
-	
-	                _this2.setState({
-	                    generalError: { message: error.message },
-	                    spinner: { fetching: false }
-	                });
-	            }).then(function (res) {
+	            }).timeout({ deadline: 6000 }).then(function (res) {
 	                _this2._asyncRequest = null;
 	                var artists = res.body.artists.artist;
 	
 	                _this2.setState({
 	                    domainData: { artists: artists },
+	                    spinner: { fetching: false }
+	                });
+	            }).catch(function (error) {
+	                _this2._asyncRequest = null;
+	
+	                _this2.setState({
+	                    generalError: { message: error.message },
 	                    spinner: { fetching: false }
 	                });
 	            });
@@ -4381,4 +4386,4 @@
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=main.eba6dec9.js.map
+//# sourceMappingURL=main.f36548a6.js.map
