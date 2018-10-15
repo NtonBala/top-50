@@ -1340,7 +1340,12 @@
 	var _ref2 = _react2.default.createElement(
 	    'h2',
 	    null,
-	    'Top 50 Artists'
+	    'Top 50 Artists by ',
+	    _react2.default.createElement(
+	        'a',
+	        { href: 'https://www.last.fm', target: '_blank' },
+	        'last.fm'
+	    )
 	);
 	
 	var TopArtists = function TopArtists(_ref) {
@@ -1515,10 +1520,12 @@
 	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	    value: true
 	});
-	//Workaround for deployment on GitHub Pages
-	//Official Herokku API for cross-origin requests for anywhere (https://cors-anywhere.herokuapp.com/)
+	/*
+	    Workaround for deployment on GitHub Pages.
+	    Official Herokku API for cross-origin requests for anywhere: https://cors-anywhere.herokuapp.com
+	*/
 	var CORSworkaround = exports.CORSworkaround = "https://cors-anywhere.herokuapp.com";
 
 /***/ },
@@ -4386,4 +4393,4 @@
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=main.f36548a6.js.map
+//# sourceMappingURL=main.ea554af6.js.map
