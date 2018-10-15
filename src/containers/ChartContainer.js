@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import request from 'superagent';
 import {rootURL, method, api_key, format} from '../constants/api';
 import {CORSworkaround} from '../helpers/githubPages';
-import TopArtists from '../components/TopArtists';
+import Chart from '../components/Chart';
 import Spinner from "../components/Spinner";
 import GeneralError from '../components/GeneralError';
 
@@ -56,7 +56,7 @@ class ChartContainer extends Component {
         } else if (this.state.generalError) {
             return <GeneralError message={this.state.generalError.message}/>
         } else {
-            return <TopArtists artists={this.state.domainData.artists}/>;
+            return <Chart artists={this.state.domainData.artists}/>;
         }
     }
 }

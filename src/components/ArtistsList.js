@@ -1,18 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Artist from './Artist';
 
-const TopArtists= ({artists}) => (
-    <section>
-        <h2>Top 50 Artists by <a href="https://www.last.fm" target="_blank">last.fm</a></h2>
+const ArtistsList= ({artists}) => (
+    <ol>
         {artists.map((item, index) => (
             //use index as res.item doesn't have unique Id (don't want to assign random Id)
-            <article key={index}>{item.name}</article>
+            <Artist key={index} artist={item}/>
         ))}
-    </section>
+    </ol>
 );
 
-TopArtists.propTypes = {
+ArtistsList.propTypes = {
     artists: PropTypes.arrayOf(PropTypes.object)
 };
 
-export default TopArtists;
+export default ArtistsList;
