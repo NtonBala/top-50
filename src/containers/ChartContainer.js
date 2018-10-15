@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import request from 'superagent';
 import {rootURL, method, api_key, format} from '../constants/api';
+import {CORSworkaround} from '../helpers/githubPages';
 import TopArtists from '../components/TopArtists';
 import Spinner from "../components/Spinner";
 import GeneralError from '../components/GeneralError';
@@ -19,20 +20,13 @@ class ChartContainer extends Component {
         this.setState({spinner: {fetching: true}});
 
         this._asyncRequest = request
-            .get(rootURL)
+            .get(`${CORSworkaround}/${rootURL}`)
             .query({
                 method,
                 api_key,
                 format
             })
-            .on('error', (error) => {
-                this._asyncRequest = null;
-
-                this.setState({
-                    generalError: {message: error.message},
-                    spinner: {fetching: false}
-                });
-            })
+            .timeout({deadline: 6000})
             .then(res => {
                 this._asyncRequest = null;
                 const artists = res.body.artists.artist;
@@ -41,7 +35,15 @@ class ChartContainer extends Component {
                     domainData: {artists},
                     spinner: {fetching: false}
                 });
-            });
+            })
+            .catch(error => {
+                this._asyncRequest = null;
+
+                this.setState({
+                    generalError: {message: error.message},
+                    spinner: {fetching: false}
+                });
+            })
     }
     componentWillUnmount() {
         if (this._asyncRequest) {

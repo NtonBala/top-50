@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const TopArtists= ({artists}) => (
     <section>
-        <h2>Top 50 Artists</h2>
+        <h2>Top 50 Artists by <a href="https://www.last.fm" target="_blank">last.fm</a></h2>
         {artists.map((item, index) => (
             //use index as res.item doesn't have unique Id (don't want to assign random Id)
             <article key={index}>{item.name}</article>
