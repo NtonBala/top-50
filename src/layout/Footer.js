@@ -4,7 +4,7 @@ const Footer = () => (
     <footer>
         <div>
             <p>
-                Copyright &#169; NtonBala.github.io/top-50 2018
+                Copyright &#169; vertalab.com 2018
             </p>
         </div>
     </footer>
