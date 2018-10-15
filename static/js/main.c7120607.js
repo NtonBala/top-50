@@ -1372,7 +1372,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	var rootURL = exports.rootURL = "http://ws.audioscrobbler.com/2.0/";
+	var rootURL = exports.rootURL = "https://cors-anywhere.herokuapp.com/http://ws.audioscrobbler.com/2.0/";
 	
 	//API query string params
 	var method = exports.method = "chart.gettopartists";
@@ -4366,4 +4366,4 @@
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=main.c82aa290.js.map
+//# sourceMappingURL=main.c7120607.js.map
